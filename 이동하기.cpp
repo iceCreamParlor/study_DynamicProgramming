@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <algorithm>
 #define MAX 1010
-
+// dp 사용할 때에는 예외 처리 하기 귀찮을 때가 있어서 인덱스를 1부터 하는 경우가 많다. (0에는 항상 0이 들어가 있으니까)
 using namespace std;
 int map[MAX][MAX], dp[MAX][MAX];
 int main()
 {
+	freopen("input.txt","r",stdin);
 	int row, col;
 	scanf("%d %d", &row, &col);
 	for(int i=1; i<= row; i++)
@@ -22,6 +23,6 @@ int main()
 		for( int j=2; j<= col; j++ )
 			dp[i][j] = max( dp[i-1][j] + map[i][j], dp[i][j-1] + map[i][j] );
 		
-	printf("%d", dp[row][col]);
+	printf("%d\n", dp[row][col]);
 	return 0;
 }
